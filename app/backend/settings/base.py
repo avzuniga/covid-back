@@ -35,6 +35,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.gis'
 ]
 
 THIRD_PARTY_APPS = [
@@ -42,18 +43,20 @@ THIRD_PARTY_APPS = [
     'django_celery_results',
     'corsheaders',
     'rest_framework',
+    'rest_framework_gis',
+    'django.contrib.sites',
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'cloudinary',
     'channels',
     'rest_auth',
     'storages',
+    'rangefilter',
 ]
-
+#'backend.apps.mascotas',
 BACKEND_APPS = [
-    'backend.apps.mascotas',
-    'backend.apps.users',
-    'backend.apps.shop'
+    'backend.apps.usuarios',
+    'backend.apps.reportes',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + BACKEND_APPS
@@ -102,7 +105,7 @@ AWS_QUERYSTRING_AUTH = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': os.environ.get('POSTGRES_DB', ''),
         'USER': os.environ.get('POSTGRES_USER', ''),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
@@ -114,9 +117,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
